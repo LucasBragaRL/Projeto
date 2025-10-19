@@ -6,24 +6,24 @@ import configExcel.LerArquivoExcel;
 import usuario.Usuario;
 
 
-class LerArquivoExcelTest {
+class LoginService {
 	
 	private Usuario user = new Usuario();
 	
-	public LerArquivoExcelTest(Usuario user) {
+	public LoginService(Usuario user) {
 		this.user = user;
 		
 	}
 
     @Test
-    void lerArquivo() {
+    boolean autenticar() {
     	LerArquivoExcel leitor = new LerArquivoExcel();
     	boolean existe = leitor.verificarCredenciais("Usuarios.xlsx", user.getEmail(),  user.getSenha());
 
     	if (existe) {
-    	    System.out.println("Usuário encontrado!");
+    	    return true;
     	} else {
-    	    System.out.println("Usuário não encontrado.");
+    	    return false;
     	}
     }
 
